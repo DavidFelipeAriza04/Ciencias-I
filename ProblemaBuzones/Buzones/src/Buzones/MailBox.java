@@ -42,7 +42,6 @@ public class MailBox {
             int k = scanner.nextInt();
             int m = scanner.nextInt();
             System.out.println(dp[k][0][m]);
-            //
         }
     }
 }

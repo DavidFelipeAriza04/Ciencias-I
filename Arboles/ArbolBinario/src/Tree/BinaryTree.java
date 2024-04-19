@@ -1,0 +1,63 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Tree;
+
+/**
+ *
+ * @author estudiantes
+ * @param <T>
+ */
+public abstract class BinaryTree<T> {
+
+    private BinaryNode root;
+
+    public void addNode(BinaryNode Parent, BinaryNode newNode, boolean isLeft) {
+        newNode.setParent(Parent);
+        if (isLeft) {
+            Parent.setLeft(newNode);
+        } else {
+            Parent.setRight(newNode);
+        }
+    }
+
+    public abstract void addNode(BinaryNode newNode);
+
+    public abstract BinaryNode<T> search(T data);
+
+    public abstract void deleteNode(BinaryNode node);
+    
+    public abstract String depth(BinaryNode node);
+    
+    public abstract int height();
+    
+    public abstract int height(int count);
+    
+    public abstract int grade();
+    
+    public abstract String grade(BinaryNode node);
+    
+    public abstract boolean isLeaf();
+
+    public void inorder() {
+        if (getRoot() != null) {
+            getRoot().inorder();
+        }
+    }
+
+    /**
+     * @return the root
+     */
+    public BinaryNode getRoot() {
+        return root;
+    }
+
+    /**
+     * @param root the root to set
+     */
+    public void setRoot(BinaryNode root) {
+        this.root = root;
+    }
+
+}

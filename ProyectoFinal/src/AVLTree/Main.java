@@ -9,13 +9,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Arbol Binario");
 
-        AVLNode Arbol = new AVLNode();
-        Arbol.addNode(new AVLNode(4));
-        Arbol.addNode(new AVLNode(7));
-        Arbol.addNode(new AVLNode(5));
-        Arbol.addNode(new AVLNode(8));
-        Arbol.addNode(new AVLNode(6));
-        Arbol.addNode(new AVLNode(3));
+        AVLNode<Integer> Arbol = new AVLNode<>();
+        Arbol.addNode(new AVLNode<>(4));
+        Arbol.addNode(new AVLNode<>(7));
+        Arbol.addNode(new AVLNode<>(5));
+        Arbol.addNode(new AVLNode<>(8));
+        Arbol.addNode(new AVLNode<>(6));
+        Arbol.addNode(new AVLNode<>(3));
         //Arbol.inorder();
         
         Arbol.balanceFactor();

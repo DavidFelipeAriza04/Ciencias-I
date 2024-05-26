@@ -9,6 +9,7 @@ package Tree;
  * @author estudiantes
  * @param <T>
  */
+@SuppressWarnings({"rawtypes"})
 public abstract class BinaryTree<T> {
 
     private BinaryNode root;
@@ -39,10 +40,16 @@ public abstract class BinaryTree<T> {
     public abstract String grade(BinaryNode node);
     
     public abstract boolean isLeaf();
+    public abstract BinaryNode  clone();//METODO PROTOTYPE
 
     public void inorder() {
         if (getRoot() != null) {
             getRoot().inorder();
+        }
+    }
+    public void preOrder() {
+        if (getRoot() != null) {
+            getRoot().preOrder();
         }
     }
 

@@ -4,10 +4,13 @@
  */
 package Tree;
 
+import AVLTree.AVLNode;
+
 /**
  *
  * @author estudiantes
  */
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public abstract class BinaryNode<T> extends BinaryTree {
 
     private T data;
@@ -15,8 +18,6 @@ public abstract class BinaryNode<T> extends BinaryTree {
     private BinaryNode right;
     private BinaryNode parent;
 
-    //BORRAR
-    @Override
     public BinaryNode<T> search(Object data) {
         BinaryNode<T> node;
         if (this.data.equals(data)) {
@@ -38,6 +39,17 @@ public abstract class BinaryNode<T> extends BinaryTree {
         if (getRight() != null) {
 
             getRight().inorder();
+        }
+    }
+
+    @Override
+    public void preOrder() {
+        System.out.println(this.getData());
+        if (getLeft() != null) {
+            getLeft().preOrder();
+        }
+        if (getRight() != null) {
+            getRight().preOrder();
         }
     }
 

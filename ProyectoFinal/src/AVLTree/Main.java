@@ -1,50 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package AVLTree;
-
+import Vista.AVLTreeVisualizer;
 /**
  *
- * @author estudiantes
+ * @author david
  */
 public class Main {
-
-    public static void main(String[] args) {
-        System.out.println("Arbol Binario");
-
+    public static void main(String[] args){
         AVLNode<Integer> Arbol = new AVLNode<>();
-        Arbol.addNode(new AVLNode<>(4));
-        Arbol.addNode(new AVLNode<>(7));
-        Arbol.addNode(new AVLNode<>(5));
-        Arbol.addNode(new AVLNode<>(8));
-        Arbol.addNode(new AVLNode<>(6));
+        AVLTreeVisualizer<Integer> visualizer = new AVLTreeVisualizer<>(Arbol);
+        Arbol.addNode(new AVLNode<>(134));
+        Arbol.addNode(new AVLNode<>(72));
+        Arbol.addNode(new AVLNode<>(216));
+        Arbol.addNode(new AVLNode<>(43));
+        Arbol.addNode(new AVLNode<>(100));
+        Arbol.addNode(new AVLNode<>(199));
+        Arbol.addNode(new AVLNode<>(321));
+        Arbol.addNode(new AVLNode<>(32));
+        Arbol.addNode(new AVLNode<>(50));
+        Arbol.addNode(new AVLNode<>(90));
+        Arbol.addNode(new AVLNode<>(110));
+        Arbol.addNode(new AVLNode<>(205));
+        Arbol.deleteNode(Arbol.search(72));
+        Arbol.deleteNode(Arbol.search(110));
+        Arbol.deleteNode(Arbol.search(321));
+        Arbol.addNode(new AVLNode<>(350));
+        Arbol.addNode(new AVLNode<>(253));
+        Arbol.addNode(new AVLNode<>(724));
         Arbol.addNode(new AVLNode<>(3));
-        //Arbol.inorder();
-        
-        Arbol.balanceFactor();
-
-        // System.out.println("Altura del arbol: " + Arbol.height());
-        // System.out.println("Grado arbol: " + Arbol.grade());
-
-        // System.out.println("Eliminar 4");
-        // Arbol.deleteNode(Arbol.search(4));
-
-        // System.out.println("Altura del arbol: " + Arbol.height());
-        // System.out.println("Grado nodo : " + Arbol.grade());
-
-        // System.out.println("Nivel del nodo 7: " + Arbol.depth(Arbol.search(7)));
-        // System.out.println("Grado nodo 7: " + Arbol.grade(Arbol.search(7)));
-
-        // System.out.println("Nivel del nodo 6: " + Arbol.depth(Arbol.search(6)));
-        // System.out.println("Grado nodo 6: " + Arbol.grade(Arbol.search(6)));
-
-        // System.out.println(Arbol.search(9));
-        // // Si la funcion depth retorna un -1 es porque el nodo no existe
-        // System.out.println("Nivel del nodo 4: " + Arbol.depth(Arbol.search(4)));
-
-        // Arbol.deleteNode(Arbol.search(5));
-        // Arbol.deleteNode(Arbol.search(7));
-        // Arbol.deleteNode(Arbol.search(6));
-        // Arbol.deleteNode(Arbol.search(8));
-
-        // System.out.println(Arbol.grade());
-
+        Arbol.addNode(new AVLNode<>(123));
+        visualizer.setVisible(true);
     }
 }

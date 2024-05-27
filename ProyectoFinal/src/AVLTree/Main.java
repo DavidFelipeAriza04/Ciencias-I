@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package AVLTree;
+
+import Tree.BinaryNode;
 import Vista.AVLTreeVisualizer;
+
 /**
  *
  * @author david
  */
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         AVLNode<Integer> Arbol = new AVLNode<>();
         AVLTreeVisualizer<Integer> visualizer = new AVLTreeVisualizer<>(Arbol);
         Arbol.addNode(new AVLNode<>(134));

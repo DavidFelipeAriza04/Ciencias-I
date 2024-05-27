@@ -30,6 +30,8 @@ public abstract class BinaryNode<T> extends BinaryTree {
         return node;
     }
 
+    private BinaryNode[] nodosMemoria;
+
     @Override
     public void inorder() {
         if (getLeft() != null) {
@@ -194,4 +196,90 @@ public abstract class BinaryNode<T> extends BinaryTree {
         this.parent = parent;
     }
 
+    public void asignarMemoria(int n) {
+        if (this == this.getRoot()) {
+            this.nodosMemoria = new AVLNode[(int)(Math.pow(2, this.height())) - 1];
+            // System.out.println("Cantidad de nodos: " + nodosMemoria.length);
+            nodosMemoria[0] = this;
+            // System.out.println("Anadiendo raiz: " + nodosMemoria[0].getData());
+        }
+        if (2 * n + 2 < this.getNodosMemoria().length) {
+            nodosMemoria[2 * n + 1] = this.getLeft() != null ? this.getLeft() : null;
+            // System.out.println("Anadiendo hijo izquierdo: " + (this.getLeft() != null ?
+            // this.getLeft().getData() : null));
+            nodosMemoria[2 * n + 2] = this.getRight() != null ? this.getRight() : null;
+            // System.out.println("Anadiendo hijo derecho: " + (this.getRight() != null ?
+            // this.getRight().getData() : null));
+            if (this.getLeft() != null) {
+                this.getLeft().asignarMemoria(2 * n + 1, this.getNodosMemoria());
+            } else {
+                // System.out.println("Hijo izquierdo nulo");
+                this.getNodosMemoria()[2 * n + 1] = null;
+            }
+            if (this.getRight() != null) {
+                this.getRight().asignarMemoria(2 * n + 2, this.getNodosMemoria());
+            } else {
+                // System.out.println("Hijo derecho nulo");
+                this.getNodosMemoria()[2 * n + 2] = null;
+            }
+        }
+        mostrarNodosMemoria();
+    }
+
+    public void asignarMemoria(int n, BinaryNode[] nodosMemoria) {
+        // System.out.println(2*n+1);
+        // System.out.println(2*n+2);
+        if (2 * n + 2 < nodosMemoria.length) {
+            nodosMemoria[2 * n + 1] = this.getLeft() != null ? this.getLeft() : null;
+            // System.out.println("Anadiendo hijo izquierda: " + (this.getLeft() != null ?
+            // this.getLeft().getData() : null));
+            nodosMemoria[2 * n + 2] = this.getRight() != null ? this.getRight() : null;
+            // System.out.println("Anadiendo hijo derecho: " + (this.getRight() != null ?
+            // this.getRight().getData() : null));
+            if (this.getLeft() != null) {
+                this.getLeft().asignarMemoria(2 * n + 1, nodosMemoria);
+            } else {
+                nodosMemoria[2 * n + 1] = null;
+            }
+            if (this.getRight() != null) {
+                this.getRight().asignarMemoria(2 * n + 2, nodosMemoria);
+            } else {
+                nodosMemoria[2 * n + 2] = null;
+            }
+        }
+    }
+
+    public void mostrarNodosMemoria() {
+        BinaryNode[] nodosMemoria = this.getNodosMemoria();
+        StringBuilder builder = new StringBuilder("[");
+        for (int i = 0; i < nodosMemoria.length; i++) {
+            // Agregar el resultado de getData() del nodo actual al StringBuilder
+            builder.append(nodosMemoria[i] == null ? "null" : nodosMemoria[i].getData());
+            // Agregar una coma y un espacio si no es el último elemento
+            if (i < nodosMemoria.length - 1) {
+                builder.append(", ");
+            }
+        }
+        // Agregar el corchete de cierre
+        builder.append("]");
+
+        // Imprimir la representación de cadena resultante
+        System.out.println(builder.toString());
+    }
+
+    public void setNodos(int nodos) {
+        super.setNodos(nodos);
+    }
+
+    public int getNodos() {
+        return super.getNodos();
+    }
+
+    public void setNodosMemoria(BinaryNode[] nodosMemoria) {
+        this.nodosMemoria = nodosMemoria;
+    }
+
+    public BinaryNode[] getNodosMemoria() {
+        return nodosMemoria;
+    }
 }

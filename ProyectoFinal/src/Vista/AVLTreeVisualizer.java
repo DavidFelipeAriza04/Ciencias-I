@@ -48,13 +48,13 @@ public class AVLTreeVisualizer<T extends Comparable> extends JFrame {
                     showTree();
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "El dato dado no es un numero", "ERROR",
-                    JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                     node.setText("");
                 }
-                
+
             }
         });
-        
+
         JButton delNode = new JButton("Eliminar");
         delNode.addActionListener(new ActionListener() {
             @Override
@@ -64,9 +64,9 @@ public class AVLTreeVisualizer<T extends Comparable> extends JFrame {
                     int nodeData = Integer.parseInt(node.getText());
                     JOptionPane.showMessageDialog(null, "Eliminar nodo " + node.getText());
                     Arbol.deleteNode(Arbol.search(nodeData));
-                    System.out.println("Elminar "+nodeData+":");
+                    // System.out.println("Elminar " + nodeData + ":");
                     node.setText("");
-                    Arbol.preOrder();
+                    // Arbol.preOrder();
                     showTree();
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "El dato dado no es un numero", "ERROR",
@@ -75,7 +75,7 @@ public class AVLTreeVisualizer<T extends Comparable> extends JFrame {
                 }
             }
         });
-        
+
         JButton exit = new JButton("Salir");
         exit.addActionListener(new ActionListener() {
             @Override

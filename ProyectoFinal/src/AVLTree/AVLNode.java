@@ -33,6 +33,7 @@ public class AVLNode<T extends Comparable> extends BinaryNode<T> {
             this.setData((T) newNode.getData());
             this.setRoot(this);
             isBalanced(this);
+            this.setNodos(getNodos() + 3);
         } else if (this.getData().compareTo(newNode.getData()) > 0) {// SI ES ISQUIERDO O DERECHO
             if (getLeft() != null) {
                 this.getLeft().addNode(newNode);
@@ -49,6 +50,9 @@ public class AVLNode<T extends Comparable> extends BinaryNode<T> {
                 setRight(newNode);
                 isBalanced((AVLNode) this.getRight());
             }
+        }
+        if (this == this.getRoot()) {
+            asignarMemoria(0);
         }
     }
 
@@ -79,12 +83,12 @@ public class AVLNode<T extends Comparable> extends BinaryNode<T> {
         }
         // SI NO ES RAIZ
         else if (node.getLeft() == null && node.getRight() == null) {// SI ES HOJA PERO NO ES RAIZ
-            System.out.println("Es hoja");
+            // System.out.println("Es hoja");
             if (this.izq_o_der((AVLNode) node)) {
-                System.out.println("Es hijo izq");
+                // System.out.println("Es hijo izq");
                 node.getParent().setLeft(null);
             } else {
-                System.out.println("Es hijo der");
+                // System.out.println("Es hijo der");
                 node.getParent().setRight(null);
             }
         } else {
@@ -108,9 +112,12 @@ public class AVLNode<T extends Comparable> extends BinaryNode<T> {
             }
         }
         // VERIFICAR SI ESTA BALANCEADO
-        System.out.println("Sucesor: " + suc.getData());
-        System.out.println("Padre: " + suc.getParent().getData());
+        // System.out.println("Sucesor: " + suc.getData());
+        // System.out.println("Padre: " + suc.getParent().getData());
         isBalanced((AVLNode) suc.getParent());
+        if (this == this.getRoot()) {
+            asignarMemoria(0);
+        }
     }
 
     // BUSCA EL SUCCESOR
@@ -204,13 +211,11 @@ public class AVLNode<T extends Comparable> extends BinaryNode<T> {
                 break;
 
             case 2:
-                System.out.println("Nodo a balancear " + node.getData());
                 if ((AVLNode) node.getRight().getLeft() == null) {
                     cp1 = null;
                 } else {
                     cp1 = (AVLNode) node.getRight().getLeft().clone();
                 }
-                System.out.println("Cp1: " + cp1.getData());
                 factB = balanceFactor((AVLNode) node.getRight());
                 if (factB == 1 || factB == 0) {
                     node.setData(node.getRight().getData());

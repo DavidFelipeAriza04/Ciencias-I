@@ -9,10 +9,11 @@ package Tree;
  * @author estudiantes
  * @param <T>
  */
-@SuppressWarnings({"rawtypes"})
+@SuppressWarnings({ "rawtypes" })
 public abstract class BinaryTree<T> {
 
     private BinaryNode root;
+    private int nodos;
 
     public void addNode(BinaryNode Parent, BinaryNode newNode, boolean isLeft) {
         newNode.setParent(Parent);
@@ -28,25 +29,27 @@ public abstract class BinaryTree<T> {
     public abstract BinaryNode<T> search(T data);
 
     public abstract void deleteNode(BinaryNode node);
-    
+
     public abstract String depth(BinaryNode node);
-    
+
     public abstract int height();
-    
+
     public abstract int height(int count);
-    
+
     public abstract int grade();
-    
+
     public abstract String grade(BinaryNode node);
-    
+
     public abstract boolean isLeaf();
-    public abstract BinaryNode  clone();//METODO PROTOTYPE
+
+    public abstract BinaryNode clone();// METODO PROTOTYPE
 
     public void inorder() {
         if (getRoot() != null) {
             getRoot().inorder();
         }
     }
+
     public void preOrder() {
         if (getRoot() != null) {
             getRoot().preOrder();
@@ -61,4 +64,10 @@ public abstract class BinaryTree<T> {
         this.root = root;
     }
 
+    public int getNodos() {
+        return nodos;
+    }
+    public void setNodos(int nodos) {
+        this.nodos = nodos;
+    }
 }
